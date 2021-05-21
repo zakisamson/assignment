@@ -1,17 +1,21 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <ComponentB />
+    <div class="btn-container">
+      <button class="btn cancel">Cancel</button>
+      <button class="btn draft">Save as Draft</button>
+      <button class="btn submit">Submit</button>
+    </div>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import ComponentB from './components/ComponentB'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    ComponentB
   }
 }
 </script>
@@ -25,4 +29,31 @@ export default {
   color: #2c3e50;
   margin-top: 60px;
 }
+
+.btn-container{
+  float: right;
+}
+
+.btn{
+  padding: 15px;
+  margin-inline: 10px;
+  border-radius: 5px;
+  border: 0.5px solid lightgray;
+}
+
+.btn.cancel{
+  border: none;
+  background-color: transparent;
+}
+
+.btn.draft{
+  background-color: whitesmoke;
+}
+
+.btn.submit{
+ background-color: #19BDBE;
+ color: white;
+ padding-inline: 75px;
+}
+
 </style>
