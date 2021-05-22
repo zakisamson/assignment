@@ -18,7 +18,7 @@
         </b-tr>
         </b-thead>
         <b-tbody>
-        <b-tr>
+        <b-tr v-for="inputt in allInputs" :key="inputt.id">
             <b-td><b-form-input v-model="text" placeholder="Description" size="lg"></b-form-input></b-td>
             <b-td><b-form-input v-model="text" placeholder="Qty" size="lg"></b-form-input></b-td>
             <b-td>
@@ -38,15 +38,15 @@
                     <b-dropdown-item>AED</b-dropdown-item>
                 </b-dropdown>
             </b-td>
-            <b-td>vat</b-td>
-            <b-td>subtotal</b-td>
-            <b-td>total</b-td>
+            <b-td>{{ inputt.vat_amount }}</b-td>
+            <b-td>{{ inputt.sub_total }}</b-td>
+            <b-td>{{ inputt.total }}</b-td>
             <b-td colspan="2">
                 <ChargeTo />
             </b-td>
         </b-tr>
         </b-tbody>
-        <b-tbody>
+        <!-- <b-tbody>
         <b-tr>
             <b-td><b-form-input v-model="text" placeholder="Description" size="lg"></b-form-input></b-td>
             <b-td><b-form-input v-model="text" placeholder="Qty" size="lg"></b-form-input></b-td>
@@ -74,7 +74,7 @@
                 <ChargeTo />
             </b-td>
         </b-tr>
-        </b-tbody>
+        </b-tbody> -->
         <b-tfoot class="table-footer">
         <b-tr>
             <b-td>Exchange rate 1 USD</b-td>
@@ -111,11 +111,14 @@
 
 <script>
     import ChargeTo from './ChargeTo'
+    import { mapGetters } from 'vuex'
+
     export default {
         name:'componentB',
         components:{
             ChargeTo
-        }
+        },
+        computed: mapGetters(['allInputs'])
     }
 </script>
 
