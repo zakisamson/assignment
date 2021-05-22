@@ -14,11 +14,11 @@ Buka kembali repository, lalu copy link repository seperti gambar di bawah
 
 ![image](https://user-images.githubusercontent.com/65299360/119223403-75d3db00-bb23-11eb-8ce8-e8246919ca2d.png)
 
-Buka command prompt yang sudah dibuka, lalu ketikkan kode masukkan kode hingga sperti di bawah ini
+Buka command prompt yang sudah dibuka, lalu ketikkan kode masukkan kode hingga sperti di bawah ini:
 ```
 git clone https://github.com/zakisamson/assignment.git
 ```
-Pencet Enter dan tunggu hingga selesai menyalin file. Jika sudah, ketikkan kode di bawah ini
+Pencet Enter dan tunggu hingga selesai menyalin file. Jika sudah, ketikkan kode di bawah ini:
 ```
 cd assignment
 ```
@@ -26,22 +26,22 @@ cd assignment
 
 ## Project setup
 
-Langkah selanjutnya adalah menjalankan kode di bawah ini
+Langkah selanjutnya adalah menjalankan kode di bawah ini:
 ```
 yarn install
 ```
 tunggu proses selesai, lalu lanjutkan langkah berikutnya
 
-### Compile dan menjalankan program
-Untuk menjalankan program, jalankan kode di bawah ini
+## Compile dan menjalankan program
+Untuk menjalankan program, jalankan kode di bawah ini:
 ```
 yarn serve
 ```
-maka akan muncul hasil yang mirip seperti ini
+maka akan muncul hasil yang mirip seperti ini:
 
 ![image](https://user-images.githubusercontent.com/65299360/119223635-bbdd6e80-bb24-11eb-9e1d-30c8d4422b41.png)
 
-Langkah terakhir adalah mengetikkan
+Langkah terakhir adalah mengetikkan:
 ```
 localhost:8080
 ```
