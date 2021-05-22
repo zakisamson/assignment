@@ -1,12 +1,12 @@
 <template>
-  <div id="app">
+  <b-container fluid id="app">
     <ComponentB />
     <div class="btn-container">
       <button class="btn cancel">Cancel</button>
       <button class="btn draft">Save as Draft</button>
       <button class="btn submit">Submit</button>
     </div>
-  </div>
+  </b-container>
 </template>
 
 <script>
@@ -15,7 +15,7 @@ import ComponentB from './components/ComponentB'
 export default {
   name: 'App',
   components: {
-    ComponentB
+    ComponentB,
   }
 }
 </script>
