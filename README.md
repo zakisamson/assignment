@@ -1,5 +1,13 @@
 # assignment
 
+## Clone repository
+
+Buka file explorer di tempat di mana aplikasi ingin diinstal
+
+```
+
+```
+
 ## Project setup
 ```
 yarn install
