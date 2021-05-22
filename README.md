@@ -23,7 +23,9 @@ Pencet Enter dan tunggu hingga selesai menyalin file. Jika sudah, ketikkan kode 
 cd assignment
 ```
 
+
 ## Project setup
+
 Langkah selanjutnya adalah menjalankan kode di bawah ini
 ```
 yarn install
