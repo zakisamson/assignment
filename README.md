@@ -1,4 +1,4 @@
-# assignment
+# Cara instalasi program
 
 ## Clone repository
 
