@@ -14,29 +14,95 @@
             <b-th>VAT Amount</b-th>
             <b-th>Sub Total</b-th>
             <b-th>Total</b-th>
-            <b-th>Change To</b-th>
+            <b-th colspan="2">Charge To</b-th>
         </b-tr>
         </b-thead>
         <b-tbody>
         <b-tr>
-            <b-td><Input1 plctext="Description"/></b-td>
-            <b-td><Input1 /></b-td>
-            <b-td>uom</b-td>
-            <b-td><Input1 /></b-td>
-            <b-td><Input1 /></b-td>
-            <b-td><Input1 /></b-td>
-            <b-td>Currency</b-td>
+            <b-td><b-form-input v-model="text" placeholder="Description" size="lg"></b-form-input></b-td>
+            <b-td><b-form-input v-model="text" placeholder="Qty" size="lg"></b-form-input></b-td>
+            <b-td>
+                <b-dropdown class="dd-btn" id="dropdown-1" text="SHP" variant="Outline" size="sm">
+                    <b-dropdown-item>SHP</b-dropdown-item>
+                    <b-dropdown-item>SHP</b-dropdown-item>
+                    <b-dropdown-item>SHP</b-dropdown-item>
+                </b-dropdown>
+            </b-td>
+            <b-td><b-form-input v-model="text" placeholder="Unit Price" size="lg"></b-form-input></b-td>
+            <b-td><b-form-input v-model="text" placeholder="" size="lg"></b-form-input></b-td>
+            <b-td><b-form-input v-model="text" placeholder="" size="lg"></b-form-input></b-td>
+            <b-td>
+                <b-dropdown class="dd-btn" id="dropdown-1" text="USD" variant="Outline" size="sm">
+                    <b-dropdown-item>USD</b-dropdown-item>
+                    <b-dropdown-item>IDR</b-dropdown-item>
+                    <b-dropdown-item>AED</b-dropdown-item>
+                </b-dropdown>
+            </b-td>
             <b-td>vat</b-td>
             <b-td>subtotal</b-td>
             <b-td>total</b-td>
-            <b-td>charge to</b-td>
+            <b-td colspan="2">
+                <ChargeTo />
+            </b-td>
         </b-tr>
         </b-tbody>
-        <b-tfoot>
+        <b-tbody>
         <b-tr>
-            <b-td colspan="11" variant="secondary" class="text-right">
-            Total Rows: <b>5</b>
+            <b-td><b-form-input v-model="text" placeholder="Description" size="lg"></b-form-input></b-td>
+            <b-td><b-form-input v-model="text" placeholder="Qty" size="lg"></b-form-input></b-td>
+            <b-td>
+                <b-dropdown class="dd-btn" id="dropdown-1" text="SHP" variant="Outline" size="sm">
+                    <b-dropdown-item>SHP</b-dropdown-item>
+                    <b-dropdown-item>SHP</b-dropdown-item>
+                    <b-dropdown-item>SHP</b-dropdown-item>
+                </b-dropdown>
             </b-td>
+            <b-td><b-form-input v-model="text" placeholder="Unit Price" size="lg"></b-form-input></b-td>
+            <b-td><b-form-input v-model="text" placeholder="" size="lg"></b-form-input></b-td>
+            <b-td><b-form-input v-model="text" placeholder="" size="lg"></b-form-input></b-td>
+            <b-td>
+                <b-dropdown class="dd-btn" id="dropdown-1" text="AED" variant="Outline" size="sm">
+                    <b-dropdown-item>USD</b-dropdown-item>
+                    <b-dropdown-item>IDR</b-dropdown-item>
+                    <b-dropdown-item>AED</b-dropdown-item>
+                </b-dropdown>
+            </b-td>
+            <b-td>vat</b-td>
+            <b-td>subtotal</b-td>
+            <b-td>total</b-td>
+            <b-td colspan="2">
+                <ChargeTo />
+            </b-td>
+        </b-tr>
+        </b-tbody>
+        <b-tfoot class="table-footer">
+        <b-tr>
+            <b-td>Exchange rate 1 USD</b-td>
+            <b-td><b-form-input v-model="text" placeholder="0" size="md"></b-form-input></b-td>
+            <b-td></b-td>
+            <b-td></b-td>
+            <b-td></b-td>
+            <b-td></b-td>
+            <b-td>USD Total</b-td>
+            <b-td>qwe</b-td>
+            <b-td>qwe</b-td>
+            <b-td>dfg</b-td>
+            <b-td></b-td>
+            <b-td><b-button size="sm" class="btn-plus">+</b-button></b-td>
+        </b-tr>
+        <b-tr>
+            <b-td></b-td>
+            <b-td></b-td>
+            <b-td></b-td>
+            <b-td></b-td>
+            <b-td></b-td>
+            <b-td></b-td>
+            <b-td>AED Total</b-td>
+            <b-td>qwe</b-td>
+            <b-td>qwe</b-td>
+            <b-td>dfg</b-td>
+            <b-td></b-td>
+            <b-td></b-td>
         </b-tr>
         </b-tfoot>
     </b-table-simple>
@@ -44,11 +110,11 @@
 </template>
 
 <script>
-    import Input1 from './Input1'
+    import ChargeTo from './ChargeTo'
     export default {
         name:'componentB',
-        components: {
-            Input1
+        components:{
+            ChargeTo
         }
     }
 </script>
@@ -60,5 +126,26 @@ h2{
 
 .table-header{
     background-color: #F6F7F9;
+}
+
+.table-footer{
+    background-color: #F6F7F9;
+    font-size: 14px;
+}
+
+.footer-ctn-left{
+    text-align: left;
+    float: left;
+}
+
+.dd-btn{
+    height: 47px;
+}
+
+.btn-plus{
+    width: 50px;
+    height: 50px;
+    background-color: #19BDBE;
+    color: white;
 }
 </style>
