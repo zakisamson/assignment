@@ -19,24 +19,16 @@
         </b-thead>
         <b-tbody>
         <b-tr v-for="inputt in allInputs" :key="inputt.id">
-            <b-td><b-form-input v-model="text" placeholder="Description" size="lg"></b-form-input></b-td>
-            <b-td><b-form-input v-model="text" placeholder="Qty" size="lg"></b-form-input></b-td>
+            <b-td><b-form-input v-model="description" placeholder="Description" size="lg"></b-form-input></b-td>
+            <b-td><b-form-input v-model="quantity" placeholder="Qty" size="lg"></b-form-input></b-td>
             <b-td>
-                <b-dropdown class="dd-btn" id="dropdown-1" text="SHP" variant="Outline" size="sm">
-                    <b-dropdown-item>SHP</b-dropdown-item>
-                    <b-dropdown-item>SHP</b-dropdown-item>
-                    <b-dropdown-item>SHP</b-dropdown-item>
-                </b-dropdown>
+                <b-form-select v-model="selected_uom" :options="options_uom" size="lg"></b-form-select>
             </b-td>
-            <b-td><b-form-input v-model="text" placeholder="Unit Price" size="lg"></b-form-input></b-td>
-            <b-td><b-form-input v-model="text" placeholder="" size="lg"></b-form-input></b-td>
-            <b-td><b-form-input v-model="text" placeholder="" size="lg"></b-form-input></b-td>
+            <b-td><b-form-input v-model="unit_price" placeholder="Unit Price" size="lg"></b-form-input></b-td>
+            <b-td><b-form-input v-model="discount" placeholder="0" size="lg"></b-form-input></b-td>
+            <b-td><b-form-input v-model="vat" placeholder="0" size="lg"></b-form-input></b-td>
             <b-td>
-                <b-dropdown class="dd-btn" id="dropdown-1" text="USD" variant="Outline" size="sm">
-                    <b-dropdown-item>USD</b-dropdown-item>
-                    <b-dropdown-item>IDR</b-dropdown-item>
-                    <b-dropdown-item>AED</b-dropdown-item>
-                </b-dropdown>
+                <b-form-select v-model="selected_currency" :options="options_currency" size="lg"></b-form-select>
             </b-td>
             <b-td>{{ inputt.vat_amount }}</b-td>
             <b-td>{{ inputt.sub_total }}</b-td>
@@ -46,39 +38,10 @@
             </b-td>
         </b-tr>
         </b-tbody>
-        <!-- <b-tbody>
-        <b-tr>
-            <b-td><b-form-input v-model="text" placeholder="Description" size="lg"></b-form-input></b-td>
-            <b-td><b-form-input v-model="text" placeholder="Qty" size="lg"></b-form-input></b-td>
-            <b-td>
-                <b-dropdown class="dd-btn" id="dropdown-1" text="SHP" variant="Outline" size="sm">
-                    <b-dropdown-item>SHP</b-dropdown-item>
-                    <b-dropdown-item>SHP</b-dropdown-item>
-                    <b-dropdown-item>SHP</b-dropdown-item>
-                </b-dropdown>
-            </b-td>
-            <b-td><b-form-input v-model="text" placeholder="Unit Price" size="lg"></b-form-input></b-td>
-            <b-td><b-form-input v-model="text" placeholder="" size="lg"></b-form-input></b-td>
-            <b-td><b-form-input v-model="text" placeholder="" size="lg"></b-form-input></b-td>
-            <b-td>
-                <b-dropdown class="dd-btn" id="dropdown-1" text="AED" variant="Outline" size="sm">
-                    <b-dropdown-item>USD</b-dropdown-item>
-                    <b-dropdown-item>IDR</b-dropdown-item>
-                    <b-dropdown-item>AED</b-dropdown-item>
-                </b-dropdown>
-            </b-td>
-            <b-td>vat</b-td>
-            <b-td>subtotal</b-td>
-            <b-td>total</b-td>
-            <b-td colspan="2">
-                <ChargeTo />
-            </b-td>
-        </b-tr>
-        </b-tbody> -->
         <b-tfoot class="table-footer">
         <b-tr>
             <b-td>Exchange rate 1 USD</b-td>
-            <b-td><b-form-input v-model="text" placeholder="0" size="md"></b-form-input></b-td>
+            <b-td><b-form-input v-model="exchange_rt" placeholder="0" size="md"></b-form-input></b-td>
             <b-td></b-td>
             <b-td></b-td>
             <b-td></b-td>
@@ -118,7 +81,27 @@
         components:{
             ChargeTo
         },
-        computed: mapGetters(['allInputs'])
+        computed: mapGetters(['allInputs']),
+        data() {
+            return {
+                description: '',
+                quantity: '',
+                unit_price: '',
+                discount: '',
+                vat: '',
+                selected_uom: 'SHP',
+                options_uom: [
+                { value: 'SHP', text: 'SHP' },
+                { value: 'a', text: 'This is First option' },
+                { value: 'b', text: 'This is Second option' },
+                ],
+                selected_currency: 'USD',
+                options_currency: [
+                { value: 'USD', text: 'USD'},
+                { value: 'AED', text: 'AED'}
+                ]
+            }
+        }
     }
 </script>
 
