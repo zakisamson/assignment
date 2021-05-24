@@ -20,11 +20,11 @@
         <b-tbody>
         <b-tr v-for="inputt in allInputs" :key="inputt.id">
             <b-td><b-form-input v-model="description" placeholder="Description" size="lg"></b-form-input></b-td>
-            <b-td><b-form-input v-model="quantity" placeholder="Qty" size="lg"></b-form-input></b-td>
+            <b-td><b-form-input v-model="quantity" placeholder="Qty" @blur="calculate" size="lg"></b-form-input></b-td>
             <b-td>
                 <b-form-select v-model="selected_uom" :options="options_uom" size="lg"></b-form-select>
             </b-td>
-            <b-td><b-form-input v-model="unit_price" placeholder="Unit Price" size="lg"></b-form-input></b-td>
+            <b-td><b-form-input v-model="unit_price" placeholder="Unit Price" @blur="calculate" size="lg"></b-form-input></b-td>
             <b-td><b-form-input v-model="discount" placeholder="0" size="lg"></b-form-input></b-td>
             <b-td><b-form-input v-model="vat" placeholder="0" size="lg"></b-form-input></b-td>
             <b-td>
@@ -32,7 +32,7 @@
             </b-td>
             <b-td>{{ inputt.vat_amount }}</b-td>
             <b-td>{{ inputt.sub_total }}</b-td>
-            <b-td>{{ inputt.total }}</b-td>
+            <b-td>{{ total }}</b-td>
             <b-td colspan="2">
                 <ChargeTo />
             </b-td>
@@ -69,6 +69,7 @@
         </b-tr>
         </b-tfoot>
     </b-table-simple>
+    {{description}}
     </b-container>
 </template>
 
@@ -81,14 +82,20 @@
         components:{
             ChargeTo
         },
-        computed: mapGetters(['allInputs']),
+        mounted(){
+            this.calculate();
+        },
+        computed: {
+            ...mapGetters(['allInputs']),
+            
+        },
         data() {
             return {
                 description: '',
-                quantity: '',
-                unit_price: '',
-                discount: '',
-                vat: '',
+                quantity: 0,
+                unit_price: 0,
+                discount: 0,
+                vat: 0,
                 selected_uom: 'SHP',
                 options_uom: [
                 { value: 'SHP', text: 'SHP' },
@@ -99,7 +106,15 @@
                 options_currency: [
                 { value: 'USD', text: 'USD'},
                 { value: 'AED', text: 'AED'}
-                ]
+                ],
+                exchange_rt:'',
+                total:''
+            };
+        },
+        methods: {
+            calculate(){
+                let count = this.quantity * this.unit_price
+                this.total = count
             }
         }
     }
