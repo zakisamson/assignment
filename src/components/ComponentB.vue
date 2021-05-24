@@ -25,12 +25,12 @@
                 <b-form-select v-model="selected_uom" :options="options_uom" size="lg"></b-form-select>
             </b-td>
             <b-td><b-form-input v-model="unit_price" placeholder="Unit Price" @blur="calculate" size="lg"></b-form-input></b-td>
-            <b-td><b-form-input v-model="discount" placeholder="0" size="lg"></b-form-input></b-td>
-            <b-td><b-form-input v-model="vat" placeholder="0" size="lg"></b-form-input></b-td>
+            <b-td><b-form-input v-model="discount" placeholder="0" @blur="calculate" size="lg"></b-form-input></b-td>
+            <b-td><b-form-input v-model="vat" placeholder="0" @blur="calculate" size="lg"></b-form-input></b-td>
             <b-td>
                 <b-form-select v-model="selected_currency" :options="options_currency" size="lg"></b-form-select>
             </b-td>
-            <b-td>{{ inputt.vat_amount }}</b-td>
+            <b-td>{{ vat_amount }}</b-td>
             <b-td>{{ inputt.sub_total }}</b-td>
             <b-td>{{ total }}</b-td>
             <b-td colspan="2">
@@ -92,10 +92,10 @@
         data() {
             return {
                 description: '',
-                quantity: 0,
-                unit_price: 0,
-                discount: 0,
-                vat: 0,
+                quantity: '',
+                unit_price: '',
+                discount: '',
+                vat: '',
                 selected_uom: 'SHP',
                 options_uom: [
                 { value: 'SHP', text: 'SHP' },
@@ -108,13 +108,19 @@
                 { value: 'AED', text: 'AED'}
                 ],
                 exchange_rt:'',
+                vat_amount:'',
                 total:''
             };
         },
         methods: {
             calculate(){
-                let count = this.quantity * this.unit_price
-                this.total = count
+                let count1 = this.quantity * this.unit_price
+                let dis_count = (count1 * this.discount) / 100
+                let count2 = count1 - dis_count
+                let vat_count = (count2 * this.vat) / 100
+                let count3 = count2 - vat_count 
+                this.total = count3
+                this.vat_amount = vat_count
             }
         }
     }
