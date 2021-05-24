@@ -31,7 +31,7 @@
                 <b-form-select v-model="selected_currency" :options="options_currency" size="lg"></b-form-select>
             </b-td>
             <b-td>{{ vat_amount }}</b-td>
-            <b-td>{{ inputt.sub_total }}</b-td>
+            <b-td>{{ total }}</b-td>
             <b-td>{{ total }}</b-td>
             <b-td colspan="2">
                 <ChargeTo />
@@ -47,9 +47,9 @@
             <b-td></b-td>
             <b-td></b-td>
             <b-td>USD Total</b-td>
-            <b-td>qwe</b-td>
-            <b-td>qwe</b-td>
-            <b-td>dfg</b-td>
+            <b-td>{{ vat_amount }}</b-td>
+            <b-td>{{ total }}</b-td>
+            <b-td>{{ total }}</b-td>
             <b-td></b-td>
             <b-td><b-button size="sm" class="btn-plus">+</b-button></b-td>
         </b-tr>
@@ -61,15 +61,14 @@
             <b-td></b-td>
             <b-td></b-td>
             <b-td>AED Total</b-td>
-            <b-td>qwe</b-td>
-            <b-td>qwe</b-td>
-            <b-td>dfg</b-td>
+            <b-td>{{ vat_amount }}</b-td>
+            <b-td>{{ total }}</b-td>
+            <b-td>{{ total }}</b-td>
             <b-td></b-td>
             <b-td></b-td>
         </b-tr>
         </b-tfoot>
     </b-table-simple>
-    {{description}}
     </b-container>
 </template>
 
@@ -87,7 +86,6 @@
         },
         computed: {
             ...mapGetters(['allInputs']),
-            
         },
         data() {
             return {
